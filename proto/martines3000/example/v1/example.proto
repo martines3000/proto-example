@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package martines3000.bench.v1;
+package martines3000.example.v1;
 
 message HelloRequest {
   string name = 1;
