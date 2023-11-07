@@ -1,0 +1,20 @@
+name: buf-pull-request
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Setup buf
+      - uses: bufbuild/buf-setup-action@v1
+        with:
+          version: "1.27.0"
+          buf_user: ${{ secrets.BUF_USER }}
+          buf_api_token: ${{ secrets.BUF_API_TOKEN }}
+          github_token: ${{ github.token }}
+      # Buf lint
+      - uses: bufbuild/buf-lint-action@v1
+        with:
+          input: "proto"
